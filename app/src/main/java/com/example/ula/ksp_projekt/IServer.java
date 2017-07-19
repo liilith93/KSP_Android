@@ -28,11 +28,11 @@ public interface IServer {
 
     @Headers("Content-Type: application/json")
     @POST("/connect/")
-    Call<ServerResponse> connect( @Body JSONObject user);
+    Call<ServerResponse> connect( @Body User user);
 
-    @POST("{IP}/disconnect")
-    Call<ServerResponse> disconnect(@Field("IP") String IP);
+    @POST("/disconnect")
+    Call<ServerResponse> disconnect(@Header("Token") String token);
 
-    @GET("{IP}/measurements")
-    Call<Measurment> measurements(@Field("IP") String IP);
+    @GET("/measurements")
+    Call<Measurment> measurements(@Header("Token") String token);
 }
